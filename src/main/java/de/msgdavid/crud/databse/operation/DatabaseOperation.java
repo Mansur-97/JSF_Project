@@ -97,7 +97,7 @@ public class DatabaseOperation {
         } catch(Exception sqlException) {
             sqlException.printStackTrace();
         }
-        return "/editMovie.xhtml?faces-redirect=true";
+        return "/editMovies.xhtml?faces-redirect=true";
     }
 
     public static String updateMovieDetailInDB(MovieBean updateMovieObject) {
