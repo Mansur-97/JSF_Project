@@ -33,13 +33,7 @@ public class DatabaseOperation {
             resultSetObject = statementObject.executeQuery("select * from movielist");
             while (resultSetObject.next()) {
                 MovieBean movieObject = new MovieBean();
-                movieObject.setMovieID(resultSetObject.getInt("ID"));
-                movieObject.setMovieTitle(resultSetObject.getString("MovieTitle"));
-                movieObject.setGenre(resultSetObject.getString("Genre"));
-                movieObject.setMovieLength(resultSetObject.getString("MovieLength"));
-                movieObject.setImdbRating(resultSetObject.getDouble("ImdbRating"));
-                movieObject.setReleaseYear(resultSetObject.getInt("ReleaseYear"));
-
+                SetMovieObject(movieObject);
                 movieList.add(movieObject);
             }
             System.out.println("Total Records Fetched: " + movieList);
@@ -48,6 +42,15 @@ public class DatabaseOperation {
             sqlException.printStackTrace();
         }
         return movieList;
+    }
+
+    private static void SetMovieObject(MovieBean movieObject) throws SQLException {
+        movieObject.setMovieID(resultSetObject.getInt("ID"));
+        movieObject.setMovieTitle(resultSetObject.getString("MovieTitle"));
+        movieObject.setGenre(resultSetObject.getString("Genre"));
+        movieObject.setMovieLength(resultSetObject.getString("MovieLength"));
+        movieObject.setImdbRating(resultSetObject.getDouble("ImdbRating"));
+        movieObject.setReleaseYear(resultSetObject.getInt("ReleaseYear"));
     }
 
     public static String saveMovieDetailInDB(MovieBean newMovieObject) {
@@ -85,12 +88,7 @@ public class DatabaseOperation {
             if(resultSetObject != null) {
                 resultSetObject.next();
                 editRecord = new MovieBean();
-                editRecord.setMovieID(resultSetObject.getInt("ID"));
-                editRecord.setMovieTitle(resultSetObject.getString("MovieTitle"));
-                editRecord.setGenre(resultSetObject.getString("Genre"));
-                editRecord.setMovieLength(resultSetObject.getString("MovieLength"));
-                editRecord.setImdbRating(resultSetObject.getDouble("ImdbRating"));
-                editRecord.setReleaseYear(resultSetObject.getInt("ReleaseYear"));
+                SetMovieObject(editRecord);
             }
             sessionMapObj.put("editMovieObject", editRecord);
             connectionObject.close();
