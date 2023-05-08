@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://java.sun.com/jsf/html">
+<h:head>
+    <title>Movie Table</title>
+</h:head>
+<h:body>
+    <h:dataTable value = "#{movie.movieList()}" var = "movie" styleClass="movie-table" headerClass="movie-table-header"
+    rowClasses="movie-table-odd-row, order-table-even-row">
+        <p:column headerText ="Movie ID" styleClass="CCC">
+            <h:outputText value="#{movie.movieID}">
+                Movie ID
+            </h:outputText>
+        </p:column>
+        <p:column headerText ="Movie Title" styleClass="CCC">
+            <h:outputText value="#{movie.movieTitle}">
+                Movie Title
+            </h:outputText>
+        </p:column>
+    </h:dataTable>
+</h:body>
+</html>

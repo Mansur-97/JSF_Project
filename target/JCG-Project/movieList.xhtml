@@ -5,6 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
 >
 <h:head>
    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -18,7 +19,7 @@
    <title>JSF CRUD Example</title>
 </h:head>
 <h:body>
-   <h2><h:outputText value="Movies List"/></h2>
+   <h2 id="main-header"><h:outputText value="Movies List"/></h2>
    <h:form id="movieForm">
       <h:dataTable id="movieTable" binding="#{table}" value="#{movie.movieList()}" var="movie" class="table-striped
        table-hover table-bordered tableUpdated">
