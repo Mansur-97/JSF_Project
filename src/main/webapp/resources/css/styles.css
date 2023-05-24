@@ -1,13 +1,6 @@
-#movieForm {
-    color: green;
+#movie-table {
     text-align: center;
-    vertical-align: middle;
-}
-
-#movieTable {
-    color: red;
-    text-align: center;
-    vertical-align: middle;
+    color: purple;
 }
 
 #main-header {

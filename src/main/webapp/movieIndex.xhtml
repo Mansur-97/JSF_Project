@@ -7,20 +7,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://java.sun.com/jsf/html">
 <h:head>
     <title>Movie Table</title>
+    <h:outputStylesheet library="css" name="styles.css" />
 </h:head>
 <h:body>
-    <h:dataTable value = "#{movie.movieList()}" var = "movie" styleClass="movie-table" headerClass="movie-table-header"
-    rowClasses="movie-table-odd-row, order-table-even-row">
-        <p:column headerText ="Movie ID" styleClass="CCC">
-            <h:outputText value="#{movie.movieID}">
-                Movie ID
-            </h:outputText>
-        </p:column>
-        <p:column headerText ="Movie Title" styleClass="CCC">
-            <h:outputText value="#{movie.movieTitle}">
-                Movie Title
-            </h:outputText>
-        </p:column>
+    <h2 id="main-header">Movie List</h2>
+    <h:dataTable value="#{movie.movieList()}" var="movie" styleClass="movieTable" headerClass="movieTableHeader"
+    rowClasses="movieTableOddRow, movieTableEvenRow">
+    <h:column>
+        <f:facet name="header">Movie Title</f:facet>
+        <h:outputText value="#{movie.movieTitle}"/>
+    </h:column>
+        <h:column>
+            <f:facet name="header">Genre</f:facet>
+            #{movie.genre}
+        </h:column>
     </h:dataTable>
 </h:body>
 </html>

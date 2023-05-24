@@ -92,7 +92,8 @@ public class DatabaseOperation {
 
     public static String updateMovieDetailInDB(MovieBean updateMovieObject) {
         try {
-            preparedStatementObject = getConnection().prepareStatement("update movielist set MovieTitle=?, Genre=?, MovieLength=?, ImdbRating=?, ReleaseYear=? where ID=?");
+            preparedStatementObject = getConnection().prepareStatement("update movielist set MovieTitle=?, Genre=?, " +
+                    "MovieLength=?, ImdbRating=?, ReleaseYear=? where ID=?");
             preparedStatementObject.setString(1,updateMovieObject.getMovieTitle());
             preparedStatementObject.setString(2,updateMovieObject.getGenre());
             preparedStatementObject.setString(3,updateMovieObject.getMovieLength());
