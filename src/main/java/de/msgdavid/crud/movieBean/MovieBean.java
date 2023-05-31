@@ -8,24 +8,34 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
 
-@ManagedBean(name = "movie")
+@ManagedBean(name = "moviemanager")
 @RequestScoped
-public class MovieBean extends Movie {
+public class MovieBean {
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    Movie movie = new Movie();
 
     @PostConstruct
     public void init() {
-        movieListFromDB = DatabaseOperation.getMovieListFromDB();
+        movie.movieListFromDB = DatabaseOperation.getMovieListFromDB();
     }
-    public ArrayList<MovieBean> movieList() {
-        return movieListFromDB;
+    public ArrayList<Movie> movieList() {
+        return movie.movieListFromDB;
     }
-    public String saveMovieDetails(MovieBean newMovieObject) {
+    public String saveMovieDetails(Movie newMovieObject) {
         return DatabaseOperation.saveMovieDetailInDB(newMovieObject);
     }
     public String editMovieRecord(int movieID) {
         return DatabaseOperation.editMovieRecordInDB(movieID);
     }
-    public String updateMovieDetails(MovieBean updateMovieObject) {
+    public String updateMovieDetails(Movie updateMovieObject) {
         return DatabaseOperation.updateMovieDetailInDB(updateMovieObject);
     }
     public String deleteMovieRecord(int movieID) {

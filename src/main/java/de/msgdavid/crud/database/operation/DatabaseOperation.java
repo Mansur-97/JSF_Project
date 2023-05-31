@@ -1,6 +1,6 @@
 package de.msgdavid.crud.database.operation;
 
-import de.msgdavid.crud.movieBean.MovieBean;
+import de.msgdavid.crud.movie.Movie;
 
 import javax.faces.context.FacesContext;
 import java.sql.*;
@@ -18,13 +18,14 @@ public class DatabaseOperation {
     public static PreparedStatement preparedStatementObject;
 
 
-    public static ArrayList<MovieBean> getMovieListFromDB() {
-        ArrayList<MovieBean> movieList = new ArrayList<>();
+    public static ArrayList<Movie> getMovieListFromDB() {
+        ArrayList<Movie> movieList = new ArrayList<>();
         try {
-            statementObject = getConnection().createStatement();
+            connectionObject = getConnection();
+            statementObject = connectionObject.createStatement();
             resultSetObject = statementObject.executeQuery("select * from movielist");
             while (resultSetObject.next()) {
-                MovieBean movieObject = new MovieBean();
+                Movie movieObject = new Movie();
                 SetMovieObject(movieObject);
                 movieList.add(movieObject);
             }
@@ -36,7 +37,7 @@ public class DatabaseOperation {
         return movieList;
     }
 
-    private static void SetMovieObject(MovieBean movieObject) throws SQLException {
+    private static void SetMovieObject(Movie movieObject) throws SQLException {
         movieObject.setMovieID(resultSetObject.getInt("ID"));
         movieObject.setMovieTitle(resultSetObject.getString("MovieTitle"));
         movieObject.setGenre(resultSetObject.getString("Genre"));
@@ -45,7 +46,7 @@ public class DatabaseOperation {
         movieObject.setReleaseYear(resultSetObject.getInt("ReleaseYear"));
     }
 
-    public static String saveMovieDetailInDB(MovieBean newMovieObject) {
+    public static String saveMovieDetailInDB(Movie newMovieObject) {
         int saveResult = 0;
         String navigationResult;
         try {
@@ -69,7 +70,7 @@ public class DatabaseOperation {
     }
 
     public static String editMovieRecordInDB(int movieID) {
-        MovieBean editRecord = null;
+        Movie editRecord = null;
         System.out.println("editMovieRecordInDB() : Movie ID: " + movieID);
 
         Map<String,Object> sessionMapObj = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -79,7 +80,7 @@ public class DatabaseOperation {
             resultSetObject = statementObject.executeQuery("select * from movielist where ID = "+movieID);
             if(resultSetObject != null) {
                 resultSetObject.next();
-                editRecord = new MovieBean();
+                editRecord = new Movie();
                 SetMovieObject(editRecord);
             }
             sessionMapObj.put("editMovieObject", editRecord);
@@ -90,7 +91,7 @@ public class DatabaseOperation {
         return "/editMovies.xhtml?faces-redirect=true";
     }
 
-    public static String updateMovieDetailInDB(MovieBean updateMovieObject) {
+    public static String updateMovieDetailInDB(Movie updateMovieObject) {
         try {
             preparedStatementObject = getConnection().prepareStatement("update movielist set MovieTitle=?, Genre=?, " +
                     "MovieLength=?, ImdbRating=?, ReleaseYear=? where ID=?");

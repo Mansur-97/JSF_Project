@@ -1,7 +1,5 @@
 package de.msgdavid.crud.movie;
 
-import de.msgdavid.crud.movieBean.MovieBean;
-
 import java.util.ArrayList;
 public class Movie {
     private int movieID;
@@ -10,7 +8,7 @@ public class Movie {
     private String movieLength;
     private double imdbRating;
     private int releaseYear;
-    public ArrayList<MovieBean> movieListFromDB;
+    public ArrayList<Movie> movieListFromDB;
     public int getMovieID() {
         return movieID;
     }
