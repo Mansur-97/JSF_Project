@@ -1,6 +1,6 @@
 package de.msgdavid.crud.database.operation;
 
-import de.msgdavid.crud.model.Movie;
+import de.msgdavid.crud.entity.Movie;
 
 import javax.faces.context.FacesContext;
 import java.sql.*;
@@ -121,3 +121,4 @@ public class DatabaseOperation {
         return "/movieList.xhtml?faces-redirect=true";
     }
 }
+
