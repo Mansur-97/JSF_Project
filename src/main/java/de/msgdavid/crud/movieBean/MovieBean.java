@@ -1,6 +1,6 @@
 package de.msgdavid.crud.movieBean;
 
-import de.msgdavid.crud.movie.Movie;
+import de.msgdavid.crud.model.Movie;
 import de.msgdavid.crud.database.operation.DatabaseOperation;
 
 import javax.annotation.PostConstruct;

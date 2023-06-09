@@ -1,6 +1,6 @@
 package de.msgdavid.crud.database.operation;
 
-import de.msgdavid.crud.movie.Movie;
+import de.msgdavid.crud.model.Movie;
 
 import javax.faces.context.FacesContext;
 import java.sql.*;
