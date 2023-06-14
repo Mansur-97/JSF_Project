@@ -48,11 +48,11 @@
          </h:column>
          <h:column>
             <f:facet name="header">Update</f:facet>
-            <h:commandButton action="#{moviemanager.editMovieRecord(movie.movieID)}" value="Update" class="btn btn-primary"/>
+            <h:commandButton action="#{moviemanager.getMovie(movie.movieID)}" value="Update" class="btn btn-primary"/>
          </h:column>
          <h:column>
             <f:facet name="header">Delete</f:facet>
-            <h:commandButton action="#{moviemanager.deleteMovieRecord(movie.movieID)}" value="Delete" class="btn btn-danger" />
+            <h:commandButton action="#{moviemanager.deleteMovie(movie.movieID)}" value="Delete" class="btn btn-danger" />
          </h:column>
       </h:dataTable>
       <div class="createMovie-Button">
