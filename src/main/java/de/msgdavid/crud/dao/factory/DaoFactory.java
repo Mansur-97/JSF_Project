@@ -1,5 +1,6 @@
 package de.msgdavid.crud.dao.factory;
 
+import de.msgdavid.crud.dao.implementation.HibernateMovieImpl;
 import de.msgdavid.crud.dao.implementation.MovieDaoImpl;
 
 public class DaoFactory {
@@ -13,5 +14,8 @@ public class DaoFactory {
     }
     public MovieDaoImpl getMovieDaoImpl() {
         return new MovieDaoImpl();
+    }
+    public HibernateMovieImpl getHibernateMovieImpl() {
+        return new HibernateMovieImpl();
     }
 }

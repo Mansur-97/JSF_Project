@@ -9,7 +9,7 @@
 <h:head>
    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <h:outputStylesheet library="css" name="bootstrap.min.css"  />
+   <h:outputStylesheet library="css" name="bootstrap.min.css"/>
    <h:link
            href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap"
            rel="stylesheet"
@@ -28,7 +28,7 @@
          </h:column>
          <h:column>
             <f:facet name="header">Movie Title</f:facet>
-            <h:outputText value="#{movie.movieTitle}"/>
+            <h:outputText value="#{movie.title}"/>
          </h:column>
          <h:column>
             <f:facet name="header">Genre</f:facet>
@@ -36,7 +36,7 @@
          </h:column>
          <h:column>
             <f:facet name="header">Movie Length</f:facet>
-            <h:outputText value="#{movie.movieLength}"/>
+            <h:outputText value="#{movie.length}"/>
          </h:column>
          <h:column>
             <f:facet name="header">IMDB Rating</f:facet>
@@ -48,11 +48,11 @@
          </h:column>
          <h:column>
             <f:facet name="header">Update</f:facet>
-            <h:commandButton action="#{moviemanager.getMovie(movie.movieID)}" value="Update" class="btn btn-primary"/>
+            <h:commandButton action="#{moviemanager.getMovie(movie.id)}" value="Update" class="btn btn-primary"/>
          </h:column>
          <h:column>
             <f:facet name="header">Delete</f:facet>
-            <h:commandButton action="#{moviemanager.deleteMovie(movie.movieID)}" value="Delete" class="btn btn-danger" />
+            <h:commandButton action="#{moviemanager.deleteMovie(movie.id)}" value="Delete" class="btn btn-danger" />
          </h:column>
       </h:dataTable>
       <div class="createMovie-Button">

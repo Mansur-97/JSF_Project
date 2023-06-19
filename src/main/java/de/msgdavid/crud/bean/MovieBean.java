@@ -1,7 +1,7 @@
 package de.msgdavid.crud.bean;
 
 import de.msgdavid.crud.dao.factory.DaoFactory;
-import de.msgdavid.crud.entity.Movie;
+import de.msgdavid.crud.entity.Movies;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -11,26 +11,26 @@ import java.util.List;
 @ManagedBean(name = "moviemanager")
 @RequestScoped
 public class MovieBean {
-    private List<Movie> movieList;
+    private List<Movies> movieList;
 
     @PostConstruct
     public void init() {
-        movieList = DaoFactory.getInstance().getMovieDaoImpl().readAll();
+        movieList = DaoFactory.getInstance().getHibernateMovieImpl().readAll();
     }
-    public List<Movie> movieList() {
+    public List<Movies> movieList() {
         return movieList;
     }
 
-    public String addMovie(Movie movie) {
-        return DaoFactory.getInstance().getMovieDaoImpl().addMovie(movie);
+    public String addMovie(Movies movies) {
+        return DaoFactory.getInstance().getMovieDaoImpl().add(movies);
     }
-    public String getMovie(int movieID) {
-        return DaoFactory.getInstance().getMovieDaoImpl().getMovie(movieID);
+    public String getMovie(int id) {
+        return DaoFactory.getInstance().getMovieDaoImpl().get(id);
     }
-    public String updateMovie(Movie movie) {
-        return DaoFactory.getInstance().getMovieDaoImpl().updateMovie(movie);
+    public String updateMovie(Movies movies) {
+        return DaoFactory.getInstance().getMovieDaoImpl().update(movies);
     }
-    public String deleteMovie(int movieID) {
-        return DaoFactory.getInstance().getMovieDaoImpl().deleteMovie(movieID);
+    public String deleteMovie(int id) {
+        return DaoFactory.getInstance().getMovieDaoImpl().delete(id);
     }
 }

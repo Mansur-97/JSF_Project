@@ -3,21 +3,23 @@ package de.msgdavid.crud.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "movietable")
+@Table(name = "movielist")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "ID")
     private int movieID;
-    @Column(name = "title")
+    @Column(name = "MovieTitle")
     private String movieTitle;
-    @Column(name = "genre")
+    @Column(name = "Genre")
     private String genre;
-    @Column(name = "length")
+    @Column(name = "MovieLength")
     private String movieLength;
-    @Column(name = "IMDbRating")
+    @Column(name = "ImdbRating")
     private double imdbRating;
+    @Column(name = "ReleaseYear")
     private int releaseYear;
+
     public int getMovieID() {
         return movieID;
     }
