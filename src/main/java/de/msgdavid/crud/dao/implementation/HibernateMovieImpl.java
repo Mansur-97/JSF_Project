@@ -1,7 +1,6 @@
 package de.msgdavid.crud.dao.implementation;
 
 import de.msgdavid.crud.dao.interf.IMovieDao;
-import de.msgdavid.crud.entity.Movie;
 import de.msgdavid.crud.entity.Movies;
 import de.msgdavid.crud.util.HibernateUtil;
 import org.hibernate.Session;
@@ -53,16 +52,30 @@ public class HibernateMovieImpl implements IMovieDao {
 
     @Override
     public String get(int id) {
-        return null;
+        Transaction transaction = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            session.get(Movies.class, id);
+
+            transaction.commit();
+        } catch (Exception exception) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            exception.printStackTrace();
+        }
+        return "/editMovies.xhtml?faces-redirect=true";
     }
 
     @Override
-    public String update(Movies movies) {
+    public String update(Movies editMovieObject) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.update(movies);
+            session.merge(editMovieObject);
 
             transaction.commit();
         } catch (Exception exception) {
@@ -80,9 +93,9 @@ public class HibernateMovieImpl implements IMovieDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            Movie movie = session.get(Movie.class, id);
-            if (movie != null) {
-                session.delete(movie);
+            Movies movies = session.get(Movies.class, id);
+            if (movies != null) {
+                session.remove(movies);
                 System.out.println("Movie deleted");
             }
 
