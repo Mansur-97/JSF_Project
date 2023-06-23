@@ -25,21 +25,21 @@ public class MovieBean {
 
     @PostConstruct
     public void init() {
-        movieList = DaoFactory.getInstance().getMovieDaoImpl().readAll();
+        movieList = DaoFactory.getInstance().getHibernateMovieImpl().readAll();
     }
     public List<Movies> movieList() {
         return movieList;
     }
     public String addMovie(Movies movies) {
-        return DaoFactory.getInstance().getMovieDaoImpl().add(movies);
+        return DaoFactory.getInstance().getHibernateMovieImpl().add(movies);
     }
     public String getMovie(int id) {
-        return DaoFactory.getInstance().getMovieDaoImpl().get(id);
+        return DaoFactory.getInstance().getHibernateMovieImpl().get(id);
     }
     public String updateMovie(Movies movies) {
-        return DaoFactory.getInstance().getMovieDaoImpl().update(movies);
+        return DaoFactory.getInstance().getHibernateMovieImpl().update(movies);
     }
     public String deleteMovie(int id) {
-        return DaoFactory.getInstance().getMovieDaoImpl().delete(id);
+        return DaoFactory.getInstance().getHibernateMovieImpl().delete(id);
     }
 }

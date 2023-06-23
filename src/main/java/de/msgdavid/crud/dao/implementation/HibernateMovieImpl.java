@@ -13,7 +13,7 @@ public class HibernateMovieImpl implements IMovieDao {
     @Override
     public List<Movies> readAll() {
         List<Movies> movieList = new ArrayList<>();
-        Transaction transaction = null;
+        Transaction transaction;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             System.out.println("Beginning Transaction");
@@ -28,7 +28,6 @@ public class HibernateMovieImpl implements IMovieDao {
     @Override
     public String add(Movies movies) {
         Transaction transaction = null;
-        int saveResult = 0;
         String navResult;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -42,11 +41,7 @@ public class HibernateMovieImpl implements IMovieDao {
             }
             exception.printStackTrace();
         }
-        if(saveResult !=0) {
-            navResult = "movieList.xhtml?faces-redirect=true";
-        } else {
-            navResult = "createMovie.xhtml?faces-redirect=true";
-        }
+        navResult = "movieList.xhtml?faces-redirect=true";
         return navResult;
     }
 

@@ -29,38 +29,38 @@
       <div class="form-group">
          <h:outputLabel for="movieTitle-id" class="control-label col-sm-2">Movie Title:</h:outputLabel>
          <div class="col-sm-4">
-            <h:inputText id="movieTitle-id" value="#{editMovieObject.title}" class="form-control"/>
+            <h:inputText id="movieTitle-id" value="#{moviemanager.movies.title}" class="form-control"/>
          </div>
       </div>
       <div class="form-group">
          <h:outputLabel for="genre-id" class="control-label col-sm-2">Genre:</h:outputLabel>
          <div class="col-sm-4">
-            <h:inputText id="genre-id" value="#{editMovieObject.genre}" class="form-control"/>
+            <h:inputText id="genre-id" value="#{moviemanager.movies.genre}" class="form-control"/>
          </div>
       </div>
       <div class="form-group">
          <h:outputLabel for="movieLength-id" class="control-label col-sm-2">Movie Length:</h:outputLabel>
          <div class="col-sm-4">
-            <h:inputText id="movieLength-id" value="#{editMovieObject.length}" class="form-control"/>
+            <h:inputText id="movieLength-id" value="#{moviemanager.movies.length}" class="form-control"/>
          </div>
       </div>
       <div class="form-group">
          <h:outputLabel for="imdbRating-id" class="control-label col-sm-2">IMDb Rating:</h:outputLabel>
          <div class="col-sm-4">
-            <h:inputText id="imdbRating-id" value="#{editMovieObject.imdbRating}" class="form-control"/>
+            <h:inputText id="imdbRating-id" value="#{moviemanager.movies.imdbRating}" class="form-control"/>
          </div>
       </div>
       <div class="form-group">
          <h:outputLabel for="releaseYear-id" class="control-label col-sm-2">Release Year:</h:outputLabel>
          <div class="col-sm-4">
-            <h:inputText id="releaseYear-id" value="#{editMovieObject.releaseYear}" class="form-control"/>
+            <h:inputText id="releaseYear-id" value="#{moviemanager.movies.releaseYear}" class="form-control"/>
          </div>
       </div>
       <div class="form-group">
          <div class="col-sm-2">
          </div>
          <div class="col-sm-4">
-            <h:commandButton value="Update" action="#{moviemanager.updateMovie(editMovieObject)}" class="btn btn-primary updateBtnStyle" />
+            <h:commandButton value="Update" action="#{moviemanager.updateMovie(moviemanager.movies)}" class="btn btn-primary updateBtnStyle" />
          </div>
       </div>
    </h:form>
