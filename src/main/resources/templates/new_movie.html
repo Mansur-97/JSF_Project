@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Review System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Review System</h1>
+        <hr>
+        <h2>Save Movie Review</h2>
+
+        <form action="#" th:action="@{/saveMovie}" th:object="${movies}" method="POST">
+
+            <input type="text" th:field="*{title}" placeholder="Movie Title" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{genre}" placeholder="Movie Genre" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{length}" placeholder="Movie Length" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{imdbRating}" placeholder="IMDb Rating" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{releaseYear}" placeholder="Release Year" class="form-control mb-4 col-4">
+
+
+            <button type="submit" class="btn btn-info col-2">Save Movie Review</button>
+
+        </form>
+
+        <hr>
+
+        <a th:href="@{/}">Back to Movie Review List</a>
+    </div>
+</body>
+</html>

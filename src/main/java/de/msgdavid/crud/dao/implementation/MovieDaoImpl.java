@@ -22,7 +22,7 @@ public class MovieDaoImpl implements IMovieDao {
         try {
             connectionObject = ConnectionFactory.getInstance().getConnection();
             statementObject = connectionObject.createStatement();
-            resultSetObject = statementObject.executeQuery("select * from movie");
+            resultSetObject = statementObject.executeQuery("select * from movie_list");
             while (resultSetObject.next()) {
                 Movies movieObject = new Movies();
                 SetMovieObject(movieObject);
@@ -42,8 +42,8 @@ public class MovieDaoImpl implements IMovieDao {
         String navigationResult;
         try {
             connectionObject = ConnectionFactory.getInstance().getConnection();
-            preparedStatementObject = connectionObject.prepareStatement("insert into movie (MovieTitle, " +
-                    "Genre, MovieLength, ImdbRating, ReleaseYear) values (?, ?, ?, ?, ?)");
+            preparedStatementObject = connectionObject.prepareStatement("insert into movie_list (movie_title, " +
+                    "movie_genre, movie_length, imdb_rating, release_year) values (?, ?, ?, ?, ?)");
             preparedStatementObject.setString(1, movies.getTitle());
             preparedStatementObject.setString(2, movies.getGenre());
             preparedStatementObject.setString(3, movies.getLength());
@@ -72,7 +72,7 @@ public class MovieDaoImpl implements IMovieDao {
         try {
             connectionObject = ConnectionFactory.getInstance().getConnection();
             statementObject = connectionObject.createStatement();
-            resultSetObject = statementObject.executeQuery("select * from movie where ID = "+ id);
+            resultSetObject = statementObject.executeQuery("select * from movie_list where id = "+ id);
             if(resultSetObject != null) {
                 resultSetObject.next();
                 editRecord = new Movies();
@@ -90,8 +90,8 @@ public class MovieDaoImpl implements IMovieDao {
     public String update(Movies movies) {
         try {
             connectionObject = ConnectionFactory.getInstance().getConnection();
-            preparedStatementObject = connectionObject.prepareStatement("update movie set MovieTitle=?, " +
-                    "Genre=?, MovieLength=?, ImdbRating=?, ReleaseYear=? where ID=?");
+            preparedStatementObject = connectionObject.prepareStatement("update movie_list set movie_title=?, " +
+                    "movie_genre=?, movie_length=?, imdb_rating=?, release_year=? where id=?");
             preparedStatementObject.setString(1,movies.getTitle());
             preparedStatementObject.setString(2,movies.getGenre());
             preparedStatementObject.setString(3,movies.getLength());
@@ -111,7 +111,7 @@ public class MovieDaoImpl implements IMovieDao {
         System.out.println("deleteMovieRecord() : Student ID: " + movieID);
         try {
             connectionObject = ConnectionFactory.getInstance().getConnection();
-            preparedStatementObject = connectionObject.prepareStatement("delete from movie where ID = "+movieID);
+            preparedStatementObject = connectionObject.prepareStatement("delete from movie_list where ID = "+movieID);
             preparedStatementObject.executeUpdate();
             connectionObject.close();
         } catch(Exception sqlException){
@@ -122,11 +122,11 @@ public class MovieDaoImpl implements IMovieDao {
 
 
     private void SetMovieObject(Movies movieObject) throws SQLException {
-        movieObject.setId(resultSetObject.getInt("ID"));
-        movieObject.setTitle(resultSetObject.getString("MovieTitle"));
-        movieObject.setGenre(resultSetObject.getString("Genre"));
-        movieObject.setLength(resultSetObject.getString("MovieLength"));
-        movieObject.setImdbRating(resultSetObject.getDouble("ImdbRating"));
-        movieObject.setReleaseYear(resultSetObject.getInt("ReleaseYear"));
+        movieObject.setId(resultSetObject.getInt("id"));
+        movieObject.setTitle(resultSetObject.getString("movie_title"));
+        movieObject.setGenre(resultSetObject.getString("movie_genre"));
+        movieObject.setLength(resultSetObject.getString("movie_length"));
+        movieObject.setImdbRating(resultSetObject.getDouble("imdb_rating"));
+        movieObject.setReleaseYear(resultSetObject.getInt("release_year"));
     }
 }

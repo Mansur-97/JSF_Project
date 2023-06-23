@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Review System</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1>Game Review System</h1>
+  <hr>
+  <h2>Update Game</h2>
+
+  <form action="#" th:action="@{/saveMovie}" th:object="${movies}" method="POST">
+
+    <input type="hidden" th:field="*{id}" />
+
+    <label>
+      <input type="text" th:field="*{title}" class="form-control mb-4 col-4">
+    </label>
+
+    <label>
+      <input type="text" th:field="*{genre}" class="form-control mb-4 col-4">
+    </label>
+
+    <label>
+      <input type="text" th:field="*{length}" class="form-control mb-4 col-4">
+    </label>
+
+    <label>
+      <input type="text" th:field="*{imdbRating}" class="form-control mb-4 col-4">
+    </label>
+
+    <label>
+      <input type="text" th:field="*{releaseYear}" class="form-control mb-4 col-4">
+    </label>
+
+    <button type="submit" class="btn btn-info col-2">Update Game Review</button>
+  </form>
+  <hr>
+
+  <a th:href="@{/}"> Back to Game List</a>
+</div>
+</body>
+</html>

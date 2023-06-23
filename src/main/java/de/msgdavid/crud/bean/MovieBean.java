@@ -13,23 +13,33 @@ import java.util.List;
 public class MovieBean {
     private List<Movies> movieList;
 
+    Movies movies = new Movies();
+
+    public Movies getMovies() {
+        return movies;
+    }
+
+    public void setMovies(Movies movies) {
+        this.movies = movies;
+    }
+
     @PostConstruct
     public void init() {
-        movieList = DaoFactory.getInstance().getHibernateMovieImpl().readAll();
+        movieList = DaoFactory.getInstance().getMovieDaoImpl().readAll();
     }
     public List<Movies> movieList() {
         return movieList;
     }
     public String addMovie(Movies movies) {
-        return DaoFactory.getInstance().getHibernateMovieImpl().add(movies);
+        return DaoFactory.getInstance().getMovieDaoImpl().add(movies);
     }
     public String getMovie(int id) {
-        return DaoFactory.getInstance().getHibernateMovieImpl().get(id);
+        return DaoFactory.getInstance().getMovieDaoImpl().get(id);
     }
     public String updateMovie(Movies movies) {
-        return DaoFactory.getInstance().getHibernateMovieImpl().update(movies);
+        return DaoFactory.getInstance().getMovieDaoImpl().update(movies);
     }
     public String deleteMovie(int id) {
-        return DaoFactory.getInstance().getHibernateMovieImpl().delete(id);
+        return DaoFactory.getInstance().getMovieDaoImpl().delete(id);
     }
 }

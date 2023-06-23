@@ -3,15 +3,21 @@ package de.msgdavid.crud.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "movies")
+@Table(name = "movie_list")
 public class Movies {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "movie_title")
     private String title;
+    @Column(name = "movie_genre")
     private String genre;
+    @Column(name = "movie_length")
     private String length;
+    @Column(name = "imdb_rating")
     private double imdbRating;
+    @Column(name = "release_year")
     private int releaseYear;
 
     public Movies() {
@@ -61,15 +67,15 @@ public class Movies {
         return imdbRating;
     }
 
-    public void setImdbRating(double imdbRating) {
-        this.imdbRating = imdbRating;
+    public void setImdbRating(double imdb) {
+        this.imdbRating = imdb;
     }
 
     public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setReleaseYear(int release) {
+        this.releaseYear = release;
     }
 }
